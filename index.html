@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IYOM — Il Menu</title>
+  <title>IYOM — Menü</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,12 +13,10 @@
 
     :root {
       --cream:      #F5EFE6;
-      --cream-deep: #EDE3D2;
       --espresso:   #26180E;
       --copper:     #B07428;
       --copper-lt:  #C9914A;
       --navy:       #1C3A5A;
-      --gold:       #C4A24A;
       --sage:       #4A6A3C;
       --text:       #26180E;
       --text-soft:  #7B6050;
@@ -34,9 +32,7 @@
       overflow-x: hidden;
     }
 
-    /* ══════════════════════════════════════
-       HERO
-    ══════════════════════════════════════ */
+    /* ── HERO ──────────────────────────────── */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -48,7 +44,6 @@
       background: var(--cream);
     }
 
-    /* Large lemon-botanical watermark */
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -66,10 +61,7 @@
       padding: 40px 24px;
     }
 
-    /* Inline logo */
-    .logo-wrap {
-      margin-bottom: 44px;
-    }
+    .logo-wrap { margin-bottom: 44px; }
 
     .hero-wordmark {
       font-family: 'Playfair Display', serif;
@@ -92,14 +84,10 @@
       height: 1px;
       background: linear-gradient(to right, transparent, var(--rule));
     }
-
-    .hero-rule.right {
-      background: linear-gradient(to left, transparent, var(--rule));
-    }
+    .hero-rule.right { background: linear-gradient(to left, transparent, var(--rule)); }
 
     .hero-diamond {
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       background: var(--copper);
       transform: rotate(45deg);
       flex-shrink: 0;
@@ -123,20 +111,9 @@
       letter-spacing: 0.04em;
     }
 
-    /* Scalloped arch beneath the hero — ties to the physical canopy in photos */
-    .hero-scallop {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 52px;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
     .hero-scroll {
       position: absolute;
-      bottom: 60px;
+      bottom: 52px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -155,8 +132,7 @@
     }
 
     .scroll-line {
-      width: 1px;
-      height: 48px;
+      width: 1px; height: 48px;
       background: linear-gradient(to bottom, var(--copper) 0%, transparent 100%);
       animation: drip 2.2s ease-in-out infinite;
     }
@@ -168,9 +144,7 @@
       100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
     }
 
-    /* ══════════════════════════════════════
-       STICKY NAVIGATION
-    ══════════════════════════════════════ */
+    /* ── STICKY NAV ────────────────────────── */
     .menu-nav {
       position: sticky;
       top: 0;
@@ -181,28 +155,31 @@
       border-bottom: 1px solid var(--rule);
     }
 
-    .menu-nav-inner {
-      max-width: 1100px;
+    .menu-nav-flex {
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      justify-content: center;
       align-items: stretch;
-      overflow-x: auto;
-      scrollbar-width: none;
-      gap: 0;
     }
 
+    .menu-nav-inner {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
     .menu-nav-inner::-webkit-scrollbar { display: none; }
 
     .nav-link {
       font-family: 'Raleway', sans-serif;
       font-size: 10.5px;
       font-weight: 400;
-      letter-spacing: 0.4em;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
       color: var(--text-soft);
       text-decoration: none;
-      padding: 18px 28px;
+      padding: 18px 22px;
       position: relative;
       white-space: nowrap;
       transition: color 0.3s;
@@ -211,35 +188,69 @@
     .nav-link::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 50%;
+      bottom: 0; left: 50%;
       transform: translateX(-50%);
-      width: 0;
-      height: 1.5px;
+      width: 0; height: 1.5px;
       background: var(--copper);
       transition: width 0.35s ease;
     }
 
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--copper);
+    .nav-link:hover, .nav-link.active { color: var(--copper); }
+    .nav-link:hover::after, .nav-link.active::after { width: 55%; }
+
+    /* Language switcher */
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 20px;
+      border-left: 1px solid var(--rule);
+      flex-shrink: 0;
     }
 
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 55%;
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: var(--text-soft);
+      padding: 3px 2px;
+      position: relative;
+      transition: color 0.25s;
+      line-height: 1;
     }
 
-    /* ══════════════════════════════════════
-       MENU SECTIONS
-    ══════════════════════════════════════ */
+    .lang-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--copper);
+      transform: scaleX(0);
+      transition: transform 0.25s;
+    }
+
+    .lang-btn:hover { color: var(--copper); }
+    .lang-btn.active { color: var(--copper); }
+    .lang-btn.active::after { transform: scaleX(1); }
+
+    .lang-sep {
+      color: var(--rule);
+      font-size: 12px;
+      user-select: none;
+      line-height: 1;
+    }
+
+    /* ── MENU SECTIONS ─────────────────────── */
     .menu-section {
       max-width: 860px;
       margin: 0 auto;
       padding: 88px 28px 72px;
     }
 
-    /* Section header */
     .sec-head {
       display: flex;
       align-items: center;
@@ -247,16 +258,9 @@
       margin-bottom: 60px;
     }
 
-    .sec-line {
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
+    .sec-line { flex: 1; height: 1px; background: var(--rule); }
 
-    .sec-label {
-      text-align: center;
-      flex-shrink: 0;
-    }
+    .sec-label { text-align: center; flex-shrink: 0; }
 
     .sec-eyebrow {
       display: block;
@@ -279,9 +283,7 @@
       line-height: 1;
     }
 
-    /* ══════════════════════════════════════
-       DISH ITEMS
-    ══════════════════════════════════════ */
+    /* ── DISH ──────────────────────────────── */
     .dish {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -295,7 +297,6 @@
     }
 
     .dish:first-child { border-top: 1px solid var(--rule); }
-
     .dish.in { opacity: 1; transform: translateY(0); }
 
     .dish-name {
@@ -348,24 +349,16 @@
       padding-top: 3px;
     }
 
-    /* ══════════════════════════════════════
-       ORNAMENTAL SECTION DIVIDER
-       (lemon motif + flanking rules)
-    ══════════════════════════════════════ */
+    /* ── ORNAMENTAL DIVIDER ────────────────── */
     .ornament {
       display: flex;
       align-items: center;
-      gap: 0;
       max-width: 860px;
       margin: 0 auto;
       padding: 0 28px;
     }
 
-    .orn-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
+    .orn-rule { flex: 1; height: 1px; background: var(--rule); }
 
     .orn-center {
       flex-shrink: 0;
@@ -376,20 +369,12 @@
       color: var(--rule);
     }
 
-    .orn-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--rule);
-    }
+    .orn-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--rule); }
 
-    /* ══════════════════════════════════════
-       BEVANDE (Drinks) — two-column grid
-    ══════════════════════════════════════ */
+    /* ── BEVANDE ───────────────────────────── */
     .drink-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
     }
 
     .drink {
@@ -406,10 +391,7 @@
 
     .drink:nth-child(odd)  { padding-right: 32px; }
     .drink:nth-child(even) { padding-left: 32px; border-left: 1px solid var(--rule); }
-
-    .drink:first-child,
-    .drink:nth-child(2) { border-top: 1px solid var(--rule); }
-
+    .drink:first-child, .drink:nth-child(2) { border-top: 1px solid var(--rule); }
     .drink.in { opacity: 1; transform: translateY(0); }
 
     .drink-name {
@@ -438,9 +420,7 @@
       flex-shrink: 0;
     }
 
-    /* ══════════════════════════════════════
-       FOOTER
-    ══════════════════════════════════════ */
+    /* ── FOOTER ────────────────────────────── */
     .footer {
       background: var(--espresso);
       padding: 80px 24px 60px;
@@ -450,13 +430,9 @@
     }
 
     .footer-bg {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.04;
-      pointer-events: none;
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0.04; pointer-events: none;
     }
 
     .footer-wordmark {
@@ -477,12 +453,7 @@
       margin-top: 10px;
     }
 
-    .footer-divider {
-      width: 50px;
-      height: 1px;
-      background: var(--copper);
-      margin: 36px auto;
-    }
+    .footer-divider { width: 50px; height: 1px; background: var(--copper); margin: 36px auto; }
 
     .footer-note {
       font-family: 'Cormorant Garamond', serif;
@@ -490,22 +461,22 @@
       font-size: 15px;
       color: rgba(245,239,230,0.4);
       line-height: 1.85;
-      max-width: 380px;
+      max-width: 420px;
       margin: 0 auto;
     }
 
-    /* ══════════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════════ */
-    @media (max-width: 660px) {
-      .nav-link { padding: 16px 14px; font-size: 9.5px; letter-spacing: 0.3em; }
+    /* ── RESPONSIVE ────────────────────────── */
+    @media (max-width: 700px) {
+      .nav-link { padding: 16px 12px; font-size: 9.5px; letter-spacing: 0.28em; }
+      .lang-switch { padding: 0 12px; gap: 4px; }
+      .lang-btn { font-size: 9px; }
       .menu-section { padding: 60px 20px 52px; }
+      .sec-head { gap: 16px; }
       .dish { grid-template-columns: 1fr; gap: 6px; }
       .dish-price { font-size: 18px; }
       .drink-grid { grid-template-columns: 1fr; }
       .drink:nth-child(even) { padding-left: 0; border-left: none; }
       .drink:nth-child(2) { border-top: none; }
-      .sec-head { gap: 16px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -516,46 +487,32 @@
 </head>
 <body>
 
-<!-- ╔══════════════════════════════════════╗
-     ║              HERO                   ║
-     ╚══════════════════════════════════════╝ -->
-<section class="hero" aria-label="IYOM Restaurant">
-
-  <!-- Large lemon botanical watermark -->
+<!-- HERO -->
+<section class="hero">
   <div class="hero-bg" aria-hidden="true">
-    <svg viewBox="0 0 500 520" width="600" height="624" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Branch -->
+    <svg viewBox="0 0 500 520" width="600" height="624" fill="none">
       <path d="M250 60 Q255 160 245 280 Q240 380 260 460" stroke="#26180E" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <!-- Left sub-branch -->
       <path d="M249 180 Q200 155 170 130" stroke="#26180E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <!-- Right sub-branch -->
       <path d="M252 240 Q300 215 330 195" stroke="#26180E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <!-- Lemon 1 (large, center-right) -->
       <ellipse cx="300" cy="140" rx="78" ry="56" fill="#26180E" transform="rotate(-20 300 140)"/>
       <ellipse cx="374" cy="130" rx="14" ry="9" fill="#26180E" transform="rotate(-20 374 130)"/>
       <ellipse cx="228" cy="148" rx="11" ry="8" fill="#26180E" transform="rotate(-20 228 148)"/>
-      <!-- Lemon 1 leaves -->
       <path d="M285 88 Q310 58 340 72 Q325 100 285 88Z" fill="#26180E"/>
       <path d="M272 92 Q248 62 225 80 Q240 106 272 92Z" fill="#26180E"/>
       <path d="M305 84 Q335 52 362 68 Q344 96 305 84Z" fill="#26180E"/>
-      <!-- Lemon 2 (left, smaller) -->
       <ellipse cx="170" cy="255" rx="58" ry="42" fill="#26180E" transform="rotate(15 170 255)"/>
       <ellipse cx="225" cy="248" rx="10" ry="7" fill="#26180E" transform="rotate(15 225 248)"/>
       <ellipse cx="117" cy="260" rx="9" ry="6" fill="#26180E" transform="rotate(15 117 260)"/>
       <path d="M158 215 Q178 192 198 202 Q186 222 158 215Z" fill="#26180E"/>
       <path d="M150 218 Q132 196 115 208 Q128 228 150 218Z" fill="#26180E"/>
-      <!-- Lemon 3 (right, medium) -->
       <ellipse cx="328" cy="310" rx="65" ry="47" fill="#26180E" transform="rotate(-10 328 310)"/>
       <ellipse cx="390" cy="303" rx="11" ry="7.5" fill="#26180E" transform="rotate(-10 390 303)"/>
       <ellipse cx="267" cy="316" rx="10" ry="7" fill="#26180E" transform="rotate(-10 267 316)"/>
       <path d="M318 265 Q342 242 365 254 Q350 276 318 265Z" fill="#26180E"/>
       <path d="M308 268 Q286 246 268 260 Q283 280 308 268Z" fill="#26180E"/>
-      <!-- Small flower buds -->
       <circle cx="249" cy="58" r="6" fill="#26180E"/>
       <circle cx="244" cy="50" r="4" fill="#26180E"/>
       <circle cx="256" cy="52" r="4" fill="#26180E"/>
-      <circle cx="242" cy="62" r="3" fill="#26180E"/>
-      <!-- Lemon 4 (small, bottom) -->
       <ellipse cx="258" cy="440" rx="44" ry="32" fill="#26180E" transform="rotate(5 258 440)"/>
       <ellipse cx="300" cy="438" rx="8" ry="5.5" fill="#26180E" transform="rotate(5 300 438)"/>
       <ellipse cx="216" cy="443" rx="7" ry="5" fill="#26180E" transform="rotate(5 216 443)"/>
@@ -564,21 +521,16 @@
   </div>
 
   <div class="hero-content">
-    <!-- Logo mark (SVG approximation of brand mark) -->
     <div class="logo-wrap" aria-hidden="true">
-      <svg width="82" height="100" viewBox="0 0 82 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="82" height="100" viewBox="0 0 82 100" fill="none">
         <path d="M10 95 L10 38 Q10 8 41 8 Q72 8 72 38 L72 95" stroke="#B07428" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-        <!-- Bottle -->
         <path d="M36 32 L36 27 Q36 22 41 22 Q46 22 46 27 L46 32 L49 39 L49 63 Q49 68 41 68 Q33 68 33 63 L33 39 Z" fill="#26180E"/>
-        <!-- Fork — 3 tines + handle -->
         <line x1="54" y1="22" x2="54" y2="42" stroke="#26180E" stroke-width="1.8" stroke-linecap="round"/>
         <line x1="58" y1="22" x2="58" y2="42" stroke="#26180E" stroke-width="1.8" stroke-linecap="round"/>
         <line x1="62" y1="22" x2="62" y2="42" stroke="#26180E" stroke-width="1.8" stroke-linecap="round"/>
         <line x1="58" y1="42" x2="58" y2="67" stroke="#26180E" stroke-width="1.8" stroke-linecap="round"/>
-        <!-- Knife -->
         <path d="M27 22 L24 44 L27 67" stroke="#26180E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <!-- om text -->
-        <text x="26" y="84" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#26180E" letter-spacing="3">om</text>
+        <text x="26" y="84" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#26180E" letter-spacing="3">om</text>
       </svg>
     </div>
 
@@ -587,44 +539,49 @@
     <div class="hero-rule-wrap">
       <div class="hero-rule"></div>
       <div class="hero-diamond" aria-hidden="true"></div>
-      <span class="hero-sub">Ristorante · Restaurant · Алания</span>
+      <span class="hero-sub" data-i18n="heroSub">Restoran · Alanya</span>
       <div class="hero-diamond" aria-hidden="true"></div>
       <div class="hero-rule right"></div>
     </div>
 
-    <p class="hero-tagline">Il sapore d'Italia sul Mediterraneo</p>
+    <p class="hero-tagline" data-i18n="heroTagline">Akdeniz kıyısında İtalyan mutfağının tadı</p>
   </div>
 
   <div class="hero-scroll" aria-hidden="true">
-    <span>Menü</span>
+    <span data-i18n="heroScroll">Menü</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
 
-<!-- ╔══════════════════════════════════════╗
-     ║         STICKY NAVIGATION           ║
-     ╚══════════════════════════════════════╝ -->
-<nav class="menu-nav" id="main-nav" aria-label="Menu categories">
-  <div class="menu-nav-inner">
-    <a class="nav-link" href="#antipasti">Antipasti</a>
-    <a class="nav-link" href="#primi">Primi Piatti</a>
-    <a class="nav-link" href="#secondi">Secondi Piatti</a>
-    <a class="nav-link" href="#dolci">Dolci</a>
-    <a class="nav-link" href="#bevande">Bevande</a>
+<!-- STICKY NAV -->
+<nav class="menu-nav" id="main-nav">
+  <div class="menu-nav-flex">
+    <div class="menu-nav-inner">
+      <a class="nav-link" href="#antipasti" data-i18n="navAntipasti">Başlangıçlar</a>
+      <a class="nav-link" href="#primi"     data-i18n="navPrimi">Makarna &amp; Risotto</a>
+      <a class="nav-link" href="#secondi"   data-i18n="navSecondi">Ana Yemekler</a>
+      <a class="nav-link" href="#dolci"     data-i18n="navDolci">Tatlılar</a>
+      <a class="nav-link" href="#bevande"   data-i18n="navBevande">İçecekler</a>
+    </div>
+    <div class="lang-switch" aria-label="Dil seçimi">
+      <button class="lang-btn active" data-lang="tr" onclick="setLang('tr')">TR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
   </div>
 </nav>
 
 
-<!-- ╔══════════════════════════════════════╗
-     ║  ANTIPASTI                          ║
-     ╚══════════════════════════════════════╝ -->
-<section class="menu-section" id="antipasti" aria-labelledby="h-antipasti">
+<!-- ANTIPASTI -->
+<section class="menu-section" id="antipasti">
   <div class="sec-head">
     <div class="sec-line"></div>
     <div class="sec-label">
-      <span class="sec-eyebrow">Per Iniziare</span>
-      <h2 class="sec-title" id="h-antipasti">Antipasti</h2>
+      <span class="sec-eyebrow" data-i18n="eyeAntipasti">Başlamak İçin</span>
+      <h2 class="sec-title" data-i18n="titleAntipasti">Başlangıçlar</h2>
     </div>
     <div class="sec-line"></div>
   </div>
@@ -632,7 +589,7 @@
   <div class="dish">
     <div>
       <div class="dish-name">Carpaccio di Manzo</div>
-      <div class="dish-desc">Thin-sliced aged Anatolian beef with Umbrian black truffle oil, shaved Parmigiano Reggiano &amp; wild arugula</div>
+      <div class="dish-desc" data-i18n="descCarpaccio">Umbria siyah trüf yağı, rendelenmiş Parmigiano Reggiano ve yaban rokası ile ince dilimlenmiş olgunlaştırılmış dana eti</div>
     </div>
     <div class="dish-price">₺485</div>
   </div>
@@ -640,8 +597,8 @@
   <div class="dish">
     <div>
       <div class="dish-name">Burrata con Pomodorini</div>
-      <div class="dish-desc">Imported fresh burrata with heirloom cherry tomatoes, cold-pressed basil oil &amp; fleur de sel from Çamaltı</div>
-      <div class="dish-badges"><span class="badge badge-veg">vegetariano</span></div>
+      <div class="dish-desc" data-i18n="descBurrata">Heirloom kiraz domates, soğuk sıkım fesleğen yağı ve Çamaltı deniz tuzu ile taze ithal burrata</div>
+      <div class="dish-badges"><span class="badge badge-veg" data-i18n="badgeVeg">vejeteryan</span></div>
     </div>
     <div class="dish-price">₺425</div>
   </div>
@@ -649,8 +606,8 @@
   <div class="dish">
     <div>
       <div class="dish-name">Insalata di Polpo</div>
-      <div class="dish-desc">Charcoal-grilled Mediterranean octopus with Amalfi citrus dressing, salted capers &amp; Taggiasca olives</div>
-      <div class="dish-badges"><span class="badge badge-sig">chef's signature</span></div>
+      <div class="dish-desc" data-i18n="descPolpo">Amalfi turunçgil sosu, tuzlanmış kapari ve Taggiasca zeytini ile mangalda pişirilmiş Akdeniz ahtapotu</div>
+      <div class="dish-badges"><span class="badge badge-sig" data-i18n="badgeSig">şef imzası</span></div>
     </div>
     <div class="dish-price">₺520</div>
   </div>
@@ -658,26 +615,24 @@
   <div class="dish">
     <div>
       <div class="dish-name">Tartare di Tonno</div>
-      <div class="dish-desc">Hand-cut yellowfin tuna with avocado cream, yuzu ponzu, sesame &amp; crystallised lemon zest</div>
+      <div class="dish-desc" data-i18n="descTonno">Avokado kreması, yuzu ponzu, susam ve kristalize limon kabuğu rendesi ile elle doğranmış sarı yüzgeçli ton balığı</div>
     </div>
     <div class="dish-price">₺580</div>
   </div>
 </section>
 
-
-<!-- ornamental divider -->
 <div class="ornament" aria-hidden="true">
   <div class="orn-rule"></div>
   <div class="orn-center">
     <div class="orn-dot"></div>
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-      <ellipse cx="18" cy="19" rx="10" ry="7.5" fill="#D2C2AE"/>
-      <ellipse cx="27.5" cy="18.5" rx="2.5" ry="1.8" fill="#D2C2AE"/>
-      <ellipse cx="9" cy="19.5" rx="2" ry="1.5" fill="#D2C2AE"/>
-      <path d="M17 12 Q21 8 25 10 Q23 14 17 12Z" fill="#D2C2AE"/>
-      <path d="M16 12.5 Q12 8 9 11 Q11 15 16 12.5Z" fill="#D2C2AE"/>
-      <path d="M17.5 11 Q17 6 18 4" stroke="#D2C2AE" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <circle cx="18" cy="3.5" r="1.5" fill="#D2C2AE"/>
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <ellipse cx="17" cy="18" rx="9.5" ry="7" fill="#D2C2AE"/>
+      <ellipse cx="26" cy="17.5" rx="2.5" ry="1.7" fill="#D2C2AE"/>
+      <ellipse cx="8.5" cy="18.5" rx="2" ry="1.4" fill="#D2C2AE"/>
+      <path d="M16 11 Q19.5 7 23 9 Q21.5 13 16 11Z" fill="#D2C2AE"/>
+      <path d="M15 11.5 Q11 7.5 8 10 Q10 14 15 11.5Z" fill="#D2C2AE"/>
+      <path d="M16.5 10 Q16 5.5 17 3.5" stroke="#D2C2AE" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <circle cx="17" cy="3" r="1.4" fill="#D2C2AE"/>
     </svg>
     <div class="orn-dot"></div>
   </div>
@@ -685,15 +640,13 @@
 </div>
 
 
-<!-- ╔══════════════════════════════════════╗
-     ║  PRIMI PIATTI                       ║
-     ╚══════════════════════════════════════╝ -->
-<section class="menu-section" id="primi" aria-labelledby="h-primi">
+<!-- PRIMI -->
+<section class="menu-section" id="primi">
   <div class="sec-head">
     <div class="sec-line"></div>
     <div class="sec-label">
-      <span class="sec-eyebrow">La Pasta &amp; Il Riso</span>
-      <h2 class="sec-title" id="h-primi">Primi Piatti</h2>
+      <span class="sec-eyebrow" data-i18n="eyePrimi">Makarna &amp; Pirinç</span>
+      <h2 class="sec-title" data-i18n="titlePrimi">Birinci Kurslar</h2>
     </div>
     <div class="sec-line"></div>
   </div>
@@ -701,8 +654,8 @@
   <div class="dish">
     <div>
       <div class="dish-name">Risotto al Limone e Gamberi</div>
-      <div class="dish-desc">Carnaroli lemon risotto with Aegean red prawns, mascarpone cream &amp; cold basil oil — a tribute to the Amalfi Coast</div>
-      <div class="dish-badges"><span class="badge badge-sig">chef's signature</span></div>
+      <div class="dish-desc" data-i18n="descRisotto">Ege kırmızı karidesi, maskarpone krema ve soğuk fesleğen yağı ile Amalfi limonlu Carnaroli rizosu — Amalfi Kıyısı'na selam</div>
+      <div class="dish-badges"><span class="badge badge-sig" data-i18n="badgeSig">şef imzası</span></div>
     </div>
     <div class="dish-price">₺680</div>
   </div>
@@ -710,8 +663,8 @@
   <div class="dish">
     <div>
       <div class="dish-name">Spaghetti al Tartufo Nero</div>
-      <div class="dish-desc">Hand-stretched bronze-die spaghetti with Umbrian black truffle, aged pecorino foam &amp; chives</div>
-      <div class="dish-badges"><span class="badge badge-veg">vegetariano</span></div>
+      <div class="dish-desc" data-i18n="descSpagetti">Umbria siyah trüfü, olgunlaştırılmış pecorino köpüğü ve frenk soğanı ile bronz kalıptan çekilmiş spagetti</div>
+      <div class="dish-badges"><span class="badge badge-veg" data-i18n="badgeVeg">vejeteryan</span></div>
     </div>
     <div class="dish-price">₺750</div>
   </div>
@@ -719,7 +672,7 @@
   <div class="dish">
     <div>
       <div class="dish-name">Pappardelle al Cinghiale</div>
-      <div class="dish-desc">Fresh egg pappardelle with slow-braised wild boar, Macedonian juniper &amp; Barolo reduction</div>
+      <div class="dish-desc" data-i18n="descPappardelle">Makedonya ardıcı ve Barolo sosuyla yavaş pişirilmiş yaban domuzu ile taze yumurtalı pappardelle</div>
     </div>
     <div class="dish-price">₺620</div>
   </div>
@@ -727,27 +680,25 @@
   <div class="dish">
     <div>
       <div class="dish-name">Ravioli Ricotta e Spinaci</div>
-      <div class="dish-desc">House-made ravioli filled with whey ricotta &amp; wilted spinach, dressed in brown butter, sage &amp; toasted pine nuts</div>
-      <div class="dish-badges"><span class="badge badge-veg">vegetariano</span></div>
+      <div class="dish-desc" data-i18n="descRavioli">Peynir altı suyu ricottası ve ıspanak ile doldurulmuş ev yapımı ravioli, kızarmış tereyağı, adaçayı ve çam fıstığı ile</div>
+      <div class="dish-badges"><span class="badge badge-veg" data-i18n="badgeVeg">vejeteryan</span></div>
     </div>
     <div class="dish-price">₺560</div>
   </div>
 </section>
 
-
-<!-- ornamental divider -->
 <div class="ornament" aria-hidden="true">
   <div class="orn-rule"></div>
   <div class="orn-center">
     <div class="orn-dot"></div>
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-      <ellipse cx="18" cy="19" rx="10" ry="7.5" fill="#D2C2AE"/>
-      <ellipse cx="27.5" cy="18.5" rx="2.5" ry="1.8" fill="#D2C2AE"/>
-      <ellipse cx="9" cy="19.5" rx="2" ry="1.5" fill="#D2C2AE"/>
-      <path d="M17 12 Q21 8 25 10 Q23 14 17 12Z" fill="#D2C2AE"/>
-      <path d="M16 12.5 Q12 8 9 11 Q11 15 16 12.5Z" fill="#D2C2AE"/>
-      <path d="M17.5 11 Q17 6 18 4" stroke="#D2C2AE" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <circle cx="18" cy="3.5" r="1.5" fill="#D2C2AE"/>
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <ellipse cx="17" cy="18" rx="9.5" ry="7" fill="#D2C2AE"/>
+      <ellipse cx="26" cy="17.5" rx="2.5" ry="1.7" fill="#D2C2AE"/>
+      <ellipse cx="8.5" cy="18.5" rx="2" ry="1.4" fill="#D2C2AE"/>
+      <path d="M16 11 Q19.5 7 23 9 Q21.5 13 16 11Z" fill="#D2C2AE"/>
+      <path d="M15 11.5 Q11 7.5 8 10 Q10 14 15 11.5Z" fill="#D2C2AE"/>
+      <path d="M16.5 10 Q16 5.5 17 3.5" stroke="#D2C2AE" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <circle cx="17" cy="3" r="1.4" fill="#D2C2AE"/>
     </svg>
     <div class="orn-dot"></div>
   </div>
@@ -755,15 +706,13 @@
 </div>
 
 
-<!-- ╔══════════════════════════════════════╗
-     ║  SECONDI PIATTI                     ║
-     ╚══════════════════════════════════════╝ -->
-<section class="menu-section" id="secondi" aria-labelledby="h-secondi">
+<!-- SECONDI -->
+<section class="menu-section" id="secondi">
   <div class="sec-head">
     <div class="sec-line"></div>
     <div class="sec-label">
-      <span class="sec-eyebrow">Il Principale</span>
-      <h2 class="sec-title" id="h-secondi">Secondi Piatti</h2>
+      <span class="sec-eyebrow" data-i18n="eyeSecondi">Ana Yemek</span>
+      <h2 class="sec-title" data-i18n="titleSecondi">Ana Yemekler</h2>
     </div>
     <div class="sec-line"></div>
   </div>
@@ -771,8 +720,8 @@
   <div class="dish">
     <div>
       <div class="dish-name">Branzino all'Acqua Pazza</div>
-      <div class="dish-desc">Mediterranean sea bass poached in saffron-scented broth with Marmara clams, salted capers &amp; Datterini tomatoes</div>
-      <div class="dish-badges"><span class="badge badge-sig">chef's signature</span></div>
+      <div class="dish-desc" data-i18n="descBranzino">Marmara midyesi, tuzlanmış kapari ve Datterini domateslerle safran aromalı suda pişirilmiş Akdeniz levreği</div>
+      <div class="dish-badges"><span class="badge badge-sig" data-i18n="badgeSig">şef imzası</span></div>
     </div>
     <div class="dish-price">₺840</div>
   </div>
@@ -780,7 +729,7 @@
   <div class="dish">
     <div>
       <div class="dish-name">Tagliata di Manzo</div>
-      <div class="dish-desc">Dry-aged prime beef tagliata rested over rosemary salt, shaved black truffle &amp; peppery wild arugula</div>
+      <div class="dish-desc" data-i18n="descTagliata">Biberiyeli tuz, siyah trüf ve yaban rokasıyla servis edilen kuru olgunlaştırılmış birinci kalite dana tagliata</div>
     </div>
     <div class="dish-price">₺980</div>
   </div>
@@ -788,7 +737,7 @@
   <div class="dish">
     <div>
       <div class="dish-name">Agnello alla Scottadito</div>
-      <div class="dish-desc">Charcoal-grilled rack of lamb with Sicilian salmoriglio, fresh mint gremolata &amp; artichoke crisps</div>
+      <div class="dish-desc" data-i18n="descAgnello">Sicilyalı salmoriglio, nane gremolata ve enginar cipsiyle mangalda pişirilmiş kuzu pirzola</div>
     </div>
     <div class="dish-price">₺860</div>
   </div>
@@ -796,26 +745,24 @@
   <div class="dish">
     <div>
       <div class="dish-name">Pollo al Mattone</div>
-      <div class="dish-desc">Free-range chicken pressed under a brick until golden, with preserved Amalfi lemon &amp; herb salsa verde</div>
+      <div class="dish-desc" data-i18n="descPollo">Korunmuş Amalfi limonu ve taze ot sosuyla taş altında altın rengi olana kadar pişirilmiş çiftlik tavuğu</div>
     </div>
     <div class="dish-price">₺720</div>
   </div>
 </section>
 
-
-<!-- ornamental divider -->
 <div class="ornament" aria-hidden="true">
   <div class="orn-rule"></div>
   <div class="orn-center">
     <div class="orn-dot"></div>
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-      <ellipse cx="18" cy="19" rx="10" ry="7.5" fill="#D2C2AE"/>
-      <ellipse cx="27.5" cy="18.5" rx="2.5" ry="1.8" fill="#D2C2AE"/>
-      <ellipse cx="9" cy="19.5" rx="2" ry="1.5" fill="#D2C2AE"/>
-      <path d="M17 12 Q21 8 25 10 Q23 14 17 12Z" fill="#D2C2AE"/>
-      <path d="M16 12.5 Q12 8 9 11 Q11 15 16 12.5Z" fill="#D2C2AE"/>
-      <path d="M17.5 11 Q17 6 18 4" stroke="#D2C2AE" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <circle cx="18" cy="3.5" r="1.5" fill="#D2C2AE"/>
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <ellipse cx="17" cy="18" rx="9.5" ry="7" fill="#D2C2AE"/>
+      <ellipse cx="26" cy="17.5" rx="2.5" ry="1.7" fill="#D2C2AE"/>
+      <ellipse cx="8.5" cy="18.5" rx="2" ry="1.4" fill="#D2C2AE"/>
+      <path d="M16 11 Q19.5 7 23 9 Q21.5 13 16 11Z" fill="#D2C2AE"/>
+      <path d="M15 11.5 Q11 7.5 8 10 Q10 14 15 11.5Z" fill="#D2C2AE"/>
+      <path d="M16.5 10 Q16 5.5 17 3.5" stroke="#D2C2AE" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <circle cx="17" cy="3" r="1.4" fill="#D2C2AE"/>
     </svg>
     <div class="orn-dot"></div>
   </div>
@@ -823,15 +770,13 @@
 </div>
 
 
-<!-- ╔══════════════════════════════════════╗
-     ║  DOLCI                              ║
-     ╚══════════════════════════════════════╝ -->
-<section class="menu-section" id="dolci" aria-labelledby="h-dolci">
+<!-- DOLCI -->
+<section class="menu-section" id="dolci">
   <div class="sec-head">
     <div class="sec-line"></div>
     <div class="sec-label">
-      <span class="sec-eyebrow">Per Finire</span>
-      <h2 class="sec-title" id="h-dolci">Dolci</h2>
+      <span class="sec-eyebrow" data-i18n="eyeDolci">Tatlı İçin</span>
+      <h2 class="sec-title" data-i18n="titleDolci">Tatlılar</h2>
     </div>
     <div class="sec-line"></div>
   </div>
@@ -839,8 +784,8 @@
   <div class="dish">
     <div>
       <div class="dish-name">Tiramisù al Pistacchio</div>
-      <div class="dish-desc">Bronte pistachio tiramisù layered with Marsala zabaione cream &amp; salted candied pistachios</div>
-      <div class="dish-badges"><span class="badge badge-veg">vegetariano</span></div>
+      <div class="dish-desc" data-i18n="descTiramisu">Marsala zabaione kreması ve tuzlu şekerlenmiş fıstık ile Bronte fıstıklı tiramisu</div>
+      <div class="dish-badges"><span class="badge badge-veg" data-i18n="badgeVeg">vejeteryan</span></div>
     </div>
     <div class="dish-price">₺320</div>
   </div>
@@ -848,8 +793,11 @@
   <div class="dish">
     <div>
       <div class="dish-name">Delizia al Limone</div>
-      <div class="dish-desc">Amalfi lemon dome with limoncello cream filling &amp; crystallised lemon zest — our house tribute to the Costiera</div>
-      <div class="dish-badges"><span class="badge badge-sig">chef's signature</span><span class="badge badge-veg">vegetariano</span></div>
+      <div class="dish-desc" data-i18n="descDelizia">Limoncello kreması dolgulu Amalfi limon kubbesi ve kristalize limon kabuğu rendesi — evimizin Amalfi'ye armağanı</div>
+      <div class="dish-badges">
+        <span class="badge badge-sig" data-i18n="badgeSig">şef imzası</span>
+        <span class="badge badge-veg" data-i18n="badgeVeg">vejeteryan</span>
+      </div>
     </div>
     <div class="dish-price">₺300</div>
   </div>
@@ -857,8 +805,8 @@
   <div class="dish">
     <div>
       <div class="dish-name">Panna Cotta alla Vaniglia</div>
-      <div class="dish-desc">Madagascan vanilla panna cotta with wild strawberry coulis, fresh basil sugar &amp; aged balsamic drops</div>
-      <div class="dish-badges"><span class="badge badge-veg">vegetariano</span></div>
+      <div class="dish-desc" data-i18n="descPannaCotta">Yabani çilek sosu, taze fesleğen şekeri ve balzamik damlalarıyla Madagaskar vanilyalı panna cotta</div>
+      <div class="dish-badges"><span class="badge badge-veg" data-i18n="badgeVeg">vejeteryan</span></div>
     </div>
     <div class="dish-price">₺280</div>
   </div>
@@ -866,27 +814,25 @@
   <div class="dish">
     <div>
       <div class="dish-name">Cannolo Siciliano</div>
-      <div class="dish-desc">Crispy shells filled with whey ricotta, Modica dark chocolate chips &amp; Sicilian orange blossom — served to order</div>
-      <div class="dish-badges"><span class="badge badge-veg">vegetariano</span></div>
+      <div class="dish-desc" data-i18n="descCannolo">Peynir altı suyu ricottası, Modica bitter çikolatası ve Sicilyalı portakal çiçeği ile çıtır tüpler — sipariş üzerine hazırlanır</div>
+      <div class="dish-badges"><span class="badge badge-veg" data-i18n="badgeVeg">vejeteryan</span></div>
     </div>
     <div class="dish-price">₺290</div>
   </div>
 </section>
 
-
-<!-- ornamental divider -->
 <div class="ornament" aria-hidden="true">
   <div class="orn-rule"></div>
   <div class="orn-center">
     <div class="orn-dot"></div>
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-      <ellipse cx="18" cy="19" rx="10" ry="7.5" fill="#D2C2AE"/>
-      <ellipse cx="27.5" cy="18.5" rx="2.5" ry="1.8" fill="#D2C2AE"/>
-      <ellipse cx="9" cy="19.5" rx="2" ry="1.5" fill="#D2C2AE"/>
-      <path d="M17 12 Q21 8 25 10 Q23 14 17 12Z" fill="#D2C2AE"/>
-      <path d="M16 12.5 Q12 8 9 11 Q11 15 16 12.5Z" fill="#D2C2AE"/>
-      <path d="M17.5 11 Q17 6 18 4" stroke="#D2C2AE" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <circle cx="18" cy="3.5" r="1.5" fill="#D2C2AE"/>
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <ellipse cx="17" cy="18" rx="9.5" ry="7" fill="#D2C2AE"/>
+      <ellipse cx="26" cy="17.5" rx="2.5" ry="1.7" fill="#D2C2AE"/>
+      <ellipse cx="8.5" cy="18.5" rx="2" ry="1.4" fill="#D2C2AE"/>
+      <path d="M16 11 Q19.5 7 23 9 Q21.5 13 16 11Z" fill="#D2C2AE"/>
+      <path d="M15 11.5 Q11 7.5 8 10 Q10 14 15 11.5Z" fill="#D2C2AE"/>
+      <path d="M16.5 10 Q16 5.5 17 3.5" stroke="#D2C2AE" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <circle cx="17" cy="3" r="1.4" fill="#D2C2AE"/>
     </svg>
     <div class="orn-dot"></div>
   </div>
@@ -894,15 +840,13 @@
 </div>
 
 
-<!-- ╔══════════════════════════════════════╗
-     ║  BEVANDE                            ║
-     ╚══════════════════════════════════════╝ -->
-<section class="menu-section" id="bevande" aria-labelledby="h-bevande">
+<!-- BEVANDE -->
+<section class="menu-section" id="bevande">
   <div class="sec-head">
     <div class="sec-line"></div>
     <div class="sec-label">
-      <span class="sec-eyebrow">Da Bere</span>
-      <h2 class="sec-title" id="h-bevande">Bevande</h2>
+      <span class="sec-eyebrow" data-i18n="eyeBevande">İçmek İçin</span>
+      <h2 class="sec-title" data-i18n="titleBevande">İçecekler</h2>
     </div>
     <div class="sec-line"></div>
   </div>
@@ -911,63 +855,56 @@
     <div class="drink">
       <div>
         <div class="drink-name">Acqua Minerale</div>
-        <div class="drink-note">Still &amp; Sparkling · 500ml / 1L</div>
+        <div class="drink-note" data-i18n="noteAcqua">Doğal &amp; Gazlı · 500ml / 1L</div>
       </div>
       <div class="drink-price">₺80 / ₺120</div>
     </div>
-
     <div class="drink">
       <div>
         <div class="drink-name">Limonata Artigianale</div>
-        <div class="drink-note">House lemon, rosemary &amp; honey soda</div>
+        <div class="drink-note" data-i18n="noteLimonata">Ev yapımı limon, biberiye ve bal gazoz</div>
       </div>
       <div class="drink-price">₺150</div>
     </div>
-
     <div class="drink">
       <div>
         <div class="drink-name">Vino Bianco della Casa</div>
-        <div class="drink-note">150ml glass</div>
+        <div class="drink-note" data-i18n="noteVinoB">150ml bardak</div>
       </div>
       <div class="drink-price">₺180</div>
     </div>
-
     <div class="drink">
       <div>
         <div class="drink-name">Vino Rosso della Casa</div>
-        <div class="drink-note">150ml glass</div>
+        <div class="drink-note" data-i18n="noteVinoR">150ml bardak</div>
       </div>
       <div class="drink-price">₺180</div>
     </div>
-
     <div class="drink">
       <div>
         <div class="drink-name">Prosecco DOC</div>
-        <div class="drink-note">Valdobbiadene · 150ml flûte</div>
+        <div class="drink-note" data-i18n="noteProsecco">Valdobbiadene · 150ml flüt</div>
       </div>
       <div class="drink-price">₺240</div>
     </div>
-
     <div class="drink">
       <div>
         <div class="drink-name">Aperol Spritz</div>
-        <div class="drink-note">Aperol, Prosecco &amp; sparkling water</div>
+        <div class="drink-note" data-i18n="noteAperol">Aperol, Prosecco ve maden suyu</div>
       </div>
       <div class="drink-price">₺280</div>
     </div>
-
     <div class="drink">
       <div>
-        <div class="drink-name">Espresso &amp; Doppio</div>
-        <div class="drink-note">Illy single origin</div>
+        <div class="drink-name">Espresso / Doppio</div>
+        <div class="drink-note" data-i18n="noteEspresso">Illy single origin</div>
       </div>
       <div class="drink-price">₺95 / ₺125</div>
     </div>
-
     <div class="drink">
       <div>
         <div class="drink-name">Caffè Americano</div>
-        <div class="drink-note">Long black, served with sparkling water</div>
+        <div class="drink-note" data-i18n="noteAmericano">Maden suyu ile servis edilir</div>
       </div>
       <div class="drink-price">₺110</div>
     </div>
@@ -975,71 +912,235 @@
 </section>
 
 
-<!-- ╔══════════════════════════════════════╗
-     ║  FOOTER                             ║
-     ╚══════════════════════════════════════╝ -->
+<!-- FOOTER -->
 <footer class="footer">
-  <!-- Faint lemon behind footer text -->
   <div class="footer-bg" aria-hidden="true">
     <svg viewBox="0 0 200 200" width="400" height="400" fill="none">
       <ellipse cx="100" cy="105" rx="75" ry="55" fill="#F5EFE6" transform="rotate(-15 100 105)"/>
       <ellipse cx="170" cy="97" rx="14" ry="9" fill="#F5EFE6" transform="rotate(-15 170 97)"/>
-      <ellipse cx="33" cy="112" rx="12" ry="8" fill="#F5EFE6" transform="rotate(-15 33 112)"/>
       <path d="M92 50 Q115 28 138 40 Q120 64 92 50Z" fill="#F5EFE6"/>
       <path d="M85 53 Q62 30 42 46 Q58 70 85 53Z" fill="#F5EFE6"/>
       <path d="M95 48 Q90 28 96 18" stroke="#F5EFE6" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <circle cx="97" cy="15" r="6" fill="#F5EFE6"/>
     </svg>
   </div>
-
-  <div style="position:relative; z-index:1;">
+  <div style="position:relative;z-index:1;">
     <p class="footer-wordmark">IYOM</p>
-    <p class="footer-brand-sub">Restaurant · Alanya</p>
+    <p class="footer-brand-sub" data-i18n="footerBrand">Restaurant · Alanya</p>
     <div class="footer-divider"></div>
-    <p class="footer-note">
-      Tüm fiyatlar KDV dahildir.<br>
-      Allerji veya diyet tercihleriniz için<br>
-      lütfen servis ekibimizi bilgilendiriniz.<br><br>
-      <em>Prezzi comprensivi di IVA.</em>
-    </p>
+    <p class="footer-note" data-i18n="footerNote">Tüm fiyatlar KDV dahildir. Allerji veya diyet tercihleriniz için lütfen servis ekibimizi bilgilendiriniz.</p>
   </div>
 </footer>
 
 
 <script>
-  // ── Intersection observer: reveal dishes ──────────────────
-  const revealEls = document.querySelectorAll('.dish, .drink');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry, idx) => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const delay = parseFloat(el.dataset.delay || 0);
-        setTimeout(() => el.classList.add('in'), delay * 80);
-        io.unobserve(el);
-      }
-    });
-  }, { threshold: 0.12 });
+/* ── TRANSLATIONS ──────────────────────────────────────────── */
+const i18n = {
+  tr: {
+    heroSub:       'Restoran · Alanya',
+    heroTagline:   'Akdeniz kıyısında İtalyan mutfağının tadı',
+    heroScroll:    'Menü',
+    navAntipasti:  'Başlangıçlar',
+    navPrimi:      'Makarna & Risotto',
+    navSecondi:    'Ana Yemekler',
+    navDolci:      'Tatlılar',
+    navBevande:    'İçecekler',
+    eyeAntipasti:  'Başlamak İçin',
+    titleAntipasti:'Başlangıçlar',
+    descCarpaccio: 'Umbria siyah trüf yağı, rendelenmiş Parmigiano Reggiano ve yaban rokası ile ince dilimlenmiş olgunlaştırılmış dana eti',
+    descBurrata:   'Heirloom kiraz domates, soğuk sıkım fesleğen yağı ve Çamaltı deniz tuzu ile taze ithal burrata',
+    descPolpo:     'Amalfi turunçgil sosu, tuzlanmış kapari ve Taggiasca zeytini ile mangalda pişirilmiş Akdeniz ahtapotu',
+    descTonno:     'Avokado kreması, yuzu ponzu, susam ve kristalize limon kabuğu rendesi ile elle doğranmış sarı yüzgeçli ton balığı',
+    eyePrimi:      'Makarna & Pirinç',
+    titlePrimi:    'Birinci Kurslar',
+    descRisotto:   "Ege kırmızı karidesi, maskarpone krema ve soğuk fesleğen yağı ile Amalfi limonlu Carnaroli rizosu — Amalfi Kıyısı'na selam",
+    descSpagetti:  'Umbria siyah trüfü, olgunlaştırılmış pecorino köpüğü ve frenk soğanı ile bronz kalıptan çekilmiş spagetti',
+    descPappardelle:'Makedonya ardıcı ve Barolo sosuyla yavaş pişirilmiş yaban domuzu ile taze yumurtalı pappardelle',
+    descRavioli:   'Peynir altı suyu ricottası ve ıspanak ile doldurulmuş ev yapımı ravioli, kızarmış tereyağı, adaçayı ve çam fıstığı ile',
+    eyeSecondi:    'Ana Yemek',
+    titleSecondi:  'Ana Yemekler',
+    descBranzino:  'Marmara midyesi, tuzlanmış kapari ve Datterini domateslerle safran aromalı suda pişirilmiş Akdeniz levreği',
+    descTagliata:  'Biberiyeli tuz, siyah trüf ve yaban rokasıyla servis edilen kuru olgunlaştırılmış birinci kalite dana tagliata',
+    descAgnello:   'Sicilyalı salmoriglio, nane gremolata ve enginar cipsiyle mangalda pişirilmiş kuzu pirzola',
+    descPollo:     'Korunmuş Amalfi limonu ve taze ot sosuyla taş altında altın rengi olana kadar pişirilmiş çiftlik tavuğu',
+    eyeDolci:      'Tatlı İçin',
+    titleDolci:    'Tatlılar',
+    descTiramisu:  'Marsala zabaione kreması ve tuzlu şekerlenmiş fıstık ile Bronte fıstıklı tiramisu',
+    descDelizia:   "Limoncello kreması dolgulu Amalfi limon kubbesi ve kristalize limon kabuğu rendesi — evimizin Amalfi'ye armağanı",
+    descPannaCotta:'Yabani çilek sosu, taze fesleğen şekeri ve balzamik damlalarıyla Madagaskar vanilyalı panna cotta',
+    descCannolo:   'Peynir altı suyu ricottası, Modica bitter çikolatası ve Sicilyalı portakal çiçeği ile çıtır tüpler — sipariş üzerine hazırlanır',
+    eyeBevande:    'İçmek İçin',
+    titleBevande:  'İçecekler',
+    noteAcqua:     'Doğal & Gazlı · 500ml / 1L',
+    noteLimonata:  'Ev yapımı limon, biberiye ve bal gazoz',
+    noteVinoB:     '150ml bardak',
+    noteVinoR:     '150ml bardak',
+    noteProsecco:  'Valdobbiadene · 150ml flüt',
+    noteAperol:    'Aperol, Prosecco ve maden suyu',
+    noteEspresso:  'Illy single origin',
+    noteAmericano: 'Maden suyu ile servis edilir',
+    badgeSig:      'şef imzası',
+    badgeVeg:      'vejeteryan',
+    footerBrand:   'Restaurant · Alanya',
+    footerNote:    'Tüm fiyatlar KDV dahildir. Allerji veya diyet tercihleriniz için lütfen servis ekibimizi bilgilendiriniz.',
+  },
 
-  revealEls.forEach((el, i) => {
-    el.dataset.delay = i % 5;
-    io.observe(el);
+  ru: {
+    heroSub:       'Ресторан · Алания',
+    heroTagline:   'Вкус Италии на берегу Средиземного моря',
+    heroScroll:    'Меню',
+    navAntipasti:  'Закуски',
+    navPrimi:      'Паста & Ризотто',
+    navSecondi:    'Основные блюда',
+    navDolci:      'Десерты',
+    navBevande:    'Напитки',
+    eyeAntipasti:  'Для начала',
+    titleAntipasti:'Закуски',
+    descCarpaccio: 'Тонко нарезанная выдержанная говядина с маслом умбрийского чёрного трюфеля, пармезаном и диким рукколой',
+    descBurrata:   'Свежая импортная буррата с томатами хейрлум, базиликовым маслом холодного отжима и морской солью Чамалты',
+    descPolpo:     'Осьминог на углях с соусом из цитрусов Амальфи, солёными каперсами и оливками Таджаска',
+    descTonno:     'Тартар из желтопёрого тунца ручной нарезки с кремом из авокадо, юдзу понзу и кристаллизованной цедрой лимона',
+    eyePrimi:      'Паста & Ризотто',
+    titlePrimi:    'Первые блюда',
+    descRisotto:   'Ризотто Карнароли с лимоном Амальфи, эгейскими красными креветками, маскарпоне и базиликовым маслом — дань уважения Амальфийскому побережью',
+    descSpagetti:  'Спагетти из бронзовой матрицы с умбрийским чёрным трюфелем, пенкой из выдержанного пекорино и зелёным луком',
+    descPappardelle:'Свежая яичная паппарделле с тушёным кабаном, македонским можжевельником и редукцией из Бароло',
+    descRavioli:   'Домашние равиоли с рикоттой и шпинатом, поданные с коричневым маслом, шалфеем и поджаренными кедровыми орехами',
+    eyeSecondi:    'Основное блюдо',
+    titleSecondi:  'Основные блюда',
+    descBranzino:  'Средиземноморский лаврак в бульоне с шафраном, мраморскими мидиями, каперсами и томатами Датерини',
+    descTagliata:  'Тальята из сухой выдержки говядины с розмариновой солью, чёрным трюфелем и диким рукколой',
+    descAgnello:   'Бараньи котлеты на углях с сицилийским сальмориджо, гремолатой из мяты и чипсами из артишока',
+    descPollo:     'Фермерская курица под камнем с консервированным лимоном Амальфи и зелёным соусом сальса верде',
+    eyeDolci:      'На десерт',
+    titleDolci:    'Десерты',
+    descTiramisu:  'Тирамису с фисташками Бронте, кремом забайоне с Марсалой и солёными засахаренными фисташками',
+    descDelizia:   'Купол из лимона Амальфи с начинкой из крема лимончелло и кристаллизованной цедрой — наш фирменный привет Костьере',
+    descPannaCotta:'Панна-котта с мадагаскарской ванилью, кули из лесной клубники, базиликовым сахаром и каплями бальзамика',
+    descCannolo:   'Хрустящие трубочки с рикоттой, тёмным шоколадом Модика и цветком сицилийского апельсина — готовятся на заказ',
+    eyeBevande:    'Напитки',
+    titleBevande:  'Напитки',
+    noteAcqua:     'Негазированная & Газированная · 500мл / 1л',
+    noteLimonata:  'Домашняя газировка с лимоном, розмарином и мёдом',
+    noteVinoB:     '150мл бокал',
+    noteVinoR:     '150мл бокал',
+    noteProsecco:  'Вальдоббьядене · 150мл флейта',
+    noteAperol:    'Апероль, Просекко и газированная вода',
+    noteEspresso:  'Illy single origin',
+    noteAmericano: 'Подаётся с газированной водой',
+    badgeSig:      'выбор шефа',
+    badgeVeg:      'вегетарианское',
+    footerBrand:   'Ресторан · Алания',
+    footerNote:    'Все цены включают НДС. Пожалуйста, сообщите нашей команде об аллергиях или диетических предпочтениях.',
+  },
+
+  en: {
+    heroSub:       'Restaurant · Alanya',
+    heroTagline:   'The flavour of Italy on the Mediterranean',
+    heroScroll:    'Menu',
+    navAntipasti:  'Starters',
+    navPrimi:      'Pasta & Risotto',
+    navSecondi:    'Main Courses',
+    navDolci:      'Desserts',
+    navBevande:    'Drinks',
+    eyeAntipasti:  'To Begin',
+    titleAntipasti:'Starters',
+    descCarpaccio: 'Thin-sliced aged Anatolian beef with Umbrian black truffle oil, shaved Parmigiano Reggiano & wild arugula',
+    descBurrata:   'Imported fresh burrata with heirloom cherry tomatoes, cold-pressed basil oil & fleur de sel',
+    descPolpo:     'Charcoal-grilled Mediterranean octopus with Amalfi citrus dressing, salted capers & Taggiasca olives',
+    descTonno:     'Hand-cut yellowfin tuna with avocado cream, yuzu ponzu, sesame & crystallised lemon zest',
+    eyePrimi:      'Pasta & Rice',
+    titlePrimi:    'First Courses',
+    descRisotto:   'Carnaroli lemon risotto with Aegean red prawns, mascarpone cream & cold basil oil — a tribute to the Amalfi Coast',
+    descSpagetti:  'Hand-stretched bronze-die spaghetti with Umbrian black truffle, aged pecorino foam & chives',
+    descPappardelle:'Fresh egg pappardelle with slow-braised wild boar, Macedonian juniper & Barolo reduction',
+    descRavioli:   'House-made ravioli filled with whey ricotta & wilted spinach, dressed in brown butter, sage & toasted pine nuts',
+    eyeSecondi:    'The Main',
+    titleSecondi:  'Main Courses',
+    descBranzino:  'Mediterranean sea bass poached in saffron-scented broth with Marmara clams, salted capers & Datterini tomatoes',
+    descTagliata:  'Dry-aged prime beef tagliata rested over rosemary salt, shaved black truffle & peppery wild arugula',
+    descAgnello:   'Charcoal-grilled rack of lamb with Sicilian salmoriglio, fresh mint gremolata & artichoke crisps',
+    descPollo:     'Free-range chicken pressed under a brick until golden, with preserved Amalfi lemon & herb salsa verde',
+    eyeDolci:      'To Finish',
+    titleDolci:    'Desserts',
+    descTiramisu:  "Bronte pistachio tiramisù layered with Marsala zabaione cream & salted candied pistachios",
+    descDelizia:   'Amalfi lemon dome with limoncello cream filling & crystallised lemon zest — our house tribute to the Costiera',
+    descPannaCotta:'Madagascan vanilla panna cotta with wild strawberry coulis, fresh basil sugar & aged balsamic drops',
+    descCannolo:   'Crispy shells filled with whey ricotta, Modica dark chocolate chips & Sicilian orange blossom — served to order',
+    eyeBevande:    'To Drink',
+    titleBevande:  'Drinks',
+    noteAcqua:     'Still & Sparkling · 500ml / 1L',
+    noteLimonata:  'House lemon, rosemary & honey soda',
+    noteVinoB:     '150ml glass',
+    noteVinoR:     '150ml glass',
+    noteProsecco:  'Valdobbiadene · 150ml flûte',
+    noteAperol:    'Aperol, Prosecco & sparkling water',
+    noteEspresso:  'Illy single origin',
+    noteAmericano: 'Served with sparkling water',
+    badgeSig:      "chef's signature",
+    badgeVeg:      'vegetarian',
+    footerBrand:   'Restaurant · Alanya',
+    footerNote:    'All prices include VAT. Please inform our team of any allergies or dietary requirements.',
+  }
+};
+
+/* ── LANGUAGE SWITCHER ─────────────────────────────────────── */
+let currentLang = 'tr';
+
+function setLang(lang) {
+  if (!i18n[lang]) return;
+  currentLang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (i18n[lang][key] !== undefined) {
+      el.textContent = i18n[lang][key];
+    }
   });
 
-  // ── Active nav highlight ──────────────────────────────────
-  const sections = document.querySelectorAll('.menu-section');
-  const navLinks = document.querySelectorAll('.nav-link');
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
 
-  const navIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(a => {
-          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
-        });
-      }
-    });
-  }, { rootMargin: '-35% 0px -35% 0px' });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('iyom-lang', lang); } catch(e) {}
+}
 
-  sections.forEach(s => navIO.observe(s));
+/* ── SCROLL REVEAL ─────────────────────────────────────────── */
+const revealIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const delay = parseFloat(el.dataset.delay || 0);
+      setTimeout(() => el.classList.add('in'), delay * 80);
+      revealIO.unobserve(el);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.dish, .drink').forEach((el, i) => {
+  el.dataset.delay = i % 5;
+  revealIO.observe(el);
+});
+
+/* ── ACTIVE NAV ────────────────────────────────────────────── */
+const navIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.nav-link').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-35% 0px -35% 0px' });
+
+document.querySelectorAll('.menu-section').forEach(s => navIO.observe(s));
+
+/* ── INIT ───────────────────────────────────────────────────── */
+(function init() {
+  let saved = 'tr';
+  try { saved = localStorage.getItem('iyom-lang') || 'tr'; } catch(e) {}
+  setLang(saved);
+})();
 </script>
 
 </body>
